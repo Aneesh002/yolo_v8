@@ -115,3 +115,10 @@ class DetectionTrainer(BaseTrainer):
         boxes = np.concatenate([lb['bboxes'] for lb in self.train_loader.dataset.labels], 0)
         cls = np.concatenate([lb['cls'] for lb in self.train_loader.dataset.labels], 0)
         plot_labels(boxes, cls.squeeze(), names=self.data['names'], save_dir=self.save_dir, on_plot=self.on_plot)
+
+
+if __name__=="__main__":
+    args = dict(model='yolov8n.pt', data='coco_costume.yaml', epochs=10)
+    trainer = DetectionTrainer(overrides=args)
+    trainer.train()
+
