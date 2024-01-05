@@ -39,3 +39,9 @@ class DetectionPredictor(BasePredictor):
             img_path = self.batch[0][i]
             results.append(Results(orig_img, path=img_path, names=self.model.names, boxes=pred))
         return results
+
+
+if __name__ == "__main__":
+    args = dict(model='/home/anish/Documents/vertex_project/ultralytics_for_testing/runs/detect/train33/weights/best.pt', source='/home/anish/Documents/vertex_project/ultralytics_for_testing/_4_1326990.png')
+    predictor = DetectionPredictor(overrides=args)
+    predictor.predict_cli()
